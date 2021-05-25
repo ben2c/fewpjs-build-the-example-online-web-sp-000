@@ -7,7 +7,6 @@ const FULL_HEART = '♥'
 const modal = document.getElementById("modal");
 const switcher = {'♡': '♥', '♥':'♡'};
 
-//when page is loaded, add event listeners on each of the hearts?
 document.addEventListener("DOMContentLoaded", activateHearts());
 
 function activateHearts(){
