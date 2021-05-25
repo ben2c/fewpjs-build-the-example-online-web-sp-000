@@ -19,7 +19,8 @@ function activateHearts(){
       .then(() => {
         if (heart === EMPTY_HEART){
           heart.setAttribute("class", "activated-heart");
-         } else {
+         }
+        else {
           heart.setAttribute("class", "like-glyph");
         }
         heart.innerHTML = switcher[heart.innerHTML];
