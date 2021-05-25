@@ -14,7 +14,9 @@ const colorStats = {
   "" : "red"
 }
 
-const articleHearts
+const articleHearts = document.querySelectorAll(".like-glyph")
+
+
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
