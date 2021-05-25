@@ -4,36 +4,37 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
-const glyphStates = {
-  "♡": "♥",
-  "♥": "♡"
-}
+const modal = document.getElementById("modal");
+const switcher = {'♡': '♥', '♥':'♡'};
 
-const colorStats = {
-  "red" : "",
-  "" : "red"
-}
+//when page is loaded, add event listeners on each of the hearts?
+document.addEventListener("DOMContentLoaded", activateHearts());
 
-const articleHearts = document.querySelectorAll(".like-glyph")
-
-function likeCallback(e) {
-  const heart = e.target;
-  minicServerCall("Url")
-    .then(function(serverMessage) {
-      heart.innerText = glyphStates[heart.innerText]
-      heart.style.color = colorStates[heart.style.color]
+function activateHearts(){
+  const heartsHTML = document.getElementsByClassName("like-glyph");
+  const heartsArray = Array.from(heartsHTML)
+  heartsArray.forEach(heart => {
+    heart.addEventListener("click", event => {
+      event.preventDefault()
+      mimicServerCall()
+      .then(() => {
+        if (heart === EMPTY_HEART){
+          heart.setAttribute("class", "activated-heart");
+         } else {
+          heart.setAttribute("class", "like-glyph");
+        }
+        heart.innerHTML = switcher[heart.innerHTML];
+      })
+      .catch(() => {
+        modal.removeAttribute("class");
+        setTimeout(function() {
+          modal.setAttribute("class", "hidden");
+        }, 3000);
+      })
     })
-    .catch(function(error) {
-      const modal = document.getElementById("modal")
-      modal.className = ''
-      modal.innerText = error
-      setTimeout(() => modal.className = "hidden", 3000)
-    })
-}
 
-for (const glyph of articleHearts) {
-  glyph.addEventListener("click", likeCallback)
-}
+  });
+};
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
