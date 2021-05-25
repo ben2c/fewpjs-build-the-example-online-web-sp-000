@@ -16,7 +16,10 @@ const colorStats = {
 
 const articleHearts = document.querySelectorAll(".like-glyph")
 
-
+function likeCallback(e) {
+  const heart = e.target;
+  minicServerCall("Url")
+}
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
