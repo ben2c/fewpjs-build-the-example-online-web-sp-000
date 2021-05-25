@@ -18,22 +18,21 @@ const articleHearts = document.querySelectorAll(".like-glyph")
 
 function likeCallback(e) {
   const heart = e.target;
-  mimicServerCall("bogusUrl")
-   //OR: mimicServerCall("bogusUrl", {forceFailure: true})
-    .then(function(serverMessage){
-       heart.innerText = glyphStates[heart.innerText];
-       heart.style.color = colorStates[heart.style.color];
+  minicServerCall("Url")
+    .then(function(serverMessage) {
+      heart.innerText = glyphStates[heart.innerText]
+      heart.style.color = colorStates[heart.style.color]
     })
     .catch(function(error) {
-      const modal = document.getElementById("modal");
-      modal.className = "";
-      modal.innerText = error;
-      setTimeout(() =>  modal.className = "hidden", 3000);
-    });
+      const modal = document.getElementById("modal")
+      modal.className = ''
+      modal.innerText = error
+      setTimeout(() => modal.className = "hidden", 3000)
+    })
 }
 
 for (const glyph of articleHearts) {
-  glyph.addEventListener("click", likeCallback);
+  glyph.addEventListener("click", likeCallback)
 }
 
 //------------------------------------------------------------------------------
