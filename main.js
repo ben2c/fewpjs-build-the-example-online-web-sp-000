@@ -14,6 +14,8 @@ const colorStats = {
   "" : "red"
 }
 
+const articleHearts
+
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
 //------------------------------------------------------------------------------
